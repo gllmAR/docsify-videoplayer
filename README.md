@@ -29,6 +29,16 @@ to
 
 ### from a drag drop via github web interface
 
+#### Video
+
+Search for url with github and assets, assume mp4 extention
+
+10 megs max with free account
 
 https://github.com/gllmAR/docsify-videoplayer/assets/7544151/873020c0-9460-4338-a4ae-514af807eb9d
+
+#### Gif 
+(unaffected)
+
+![200w](https://github.com/gllmAR/docsify-videoplayer/assets/7544151/b1858a0f-19a4-4207-9eae-c69540eeb73b)
 
