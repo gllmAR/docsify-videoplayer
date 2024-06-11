@@ -7,7 +7,7 @@ turn
 ```
 to 
 
-![a video](/media/ipsum_020.mp4)
+![a video that work on docsify pages](/media/ipsum_020.mp4)
 
 
 
@@ -23,6 +23,6 @@ to
 
 ### in table
 
-| ![](/media/ipsum_020.mp4) | ![](/media/ipsum_030.mp4) |
+| ![A](/media/ipsum_020.mp4) | ![B](/media/ipsum_030.mp4) |
 |- | -|
-| ![](/media/ipsum_040.mp4)  | ![](/media/ipsum_050.mp4)  |
+| ![C](/media/ipsum_040.mp4)  | ![D](/media/ipsum_050.mp4)  |
