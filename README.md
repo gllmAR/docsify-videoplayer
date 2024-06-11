@@ -10,7 +10,9 @@ to
 ![a video that work on docsify pages](/media/ipsum_020.mp4)
 
 
+## Demo 
 
+[docsify-videoplayer-demo](https://gllmar.github.io/docsify-videoplayer/#/)
 
 ## tests
 
@@ -18,7 +20,7 @@ to
 
 * ![a video](/media/ipsum_020.mp4)
 
-* ![another video](./media/ipsum_030.mp4)
+* ![another video with relative link](media/ipsum_030.mp4)
 
 
 ### in table
@@ -31,14 +33,18 @@ to
 
 #### Video
 
-Search for url with github and assets, assume mp4 extention
+Search for url with github and assets, assume mp4 extention if founded. Could lead to problem. 
 
 10 megs max with free account
 
 https://github.com/gllmAR/docsify-videoplayer/assets/7544151/873020c0-9460-4338-a4ae-514af807eb9d
 
 #### Gif 
-(unaffected)
+(unaffected because github put it in a image tag)
+
+```
+![200w](https://github.com/gllmAR/docsify-videoplayer/assets/7544151/b1858a0f-19a4-4207-9eae-c69540eeb73b)
+```
 
 ![200w](https://github.com/gllmAR/docsify-videoplayer/assets/7544151/b1858a0f-19a4-4207-9eae-c69540eeb73b)
 
