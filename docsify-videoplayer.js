@@ -25,18 +25,17 @@
     return videoPlayer;
   }
 
-  // Function to resolve relative URLs for normal links based on the current document location
+  // Function to resolve relative URLs for links based on the current document location
   function resolveRelativeUrl(url) {
     const currentUrl = window.location.href;
-    const hashIndex = currentUrl.indexOf('#/');
-    let basePath = '';
+    const hashIndex = currentUrl.indexOf('#');
+    let basePath = currentUrl;
 
     if (hashIndex !== -1) {
-      const hashPath = currentUrl.substring(hashIndex + 1); // Get the path after the hash
-      basePath = hashPath.substring(0, hashPath.lastIndexOf('/')); // Get the base path without the last segment
+      basePath = currentUrl.substring(0, hashIndex) + currentUrl.substring(hashIndex + 1, currentUrl.lastIndexOf('/'));
     }
 
-    return new URL(url, window.location.origin + basePath + '/').href;
+    return new URL(url, basePath + '/').href;
   }
 
   // Function to replace video links and images with video players
