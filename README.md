@@ -18,7 +18,7 @@ to
 
 ### relative links
 
-[relative link](./relative-link/)
+[relative link](./relative-link/readme.md)
 
 ### in lists
 
