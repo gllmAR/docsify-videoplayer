@@ -1,12 +1,15 @@
 (function() {
+  // Function to check if a URL is a video link based on its extension
   function isVideoLink(url, videoExtensions) {
     const ext = url.split('.').pop().toLowerCase();
     return videoExtensions.includes(ext);
   }
 
+  // Function to create a video player element
   function createVideoPlayer(url, type) {
     const videoPlayer = document.createElement('video');
     videoPlayer.setAttribute('controls', '');
+    videoPlayer.setAttribute('playsinline', '');
     videoPlayer.setAttribute('width', '100%');
     videoPlayer.setAttribute('height', 'auto');
     videoPlayer.style.maxWidth = '100%';
@@ -22,17 +25,34 @@
     return videoPlayer;
   }
 
+  // Function to resolve relative URLs for normal links based on the current document location
+  function resolveRelativeUrl(url) {
+    const currentUrl = window.location.href;
+    const hashIndex = currentUrl.indexOf('#/');
+    let basePath = '';
+
+    if (hashIndex !== -1) {
+      const hashPath = currentUrl.substring(hashIndex + 1); // Get the path after the hash
+      basePath = hashPath.substring(0, hashPath.lastIndexOf('/')); // Get the base path without the last segment
+    }
+
+    return new URL(url, window.location.origin + basePath + '/').href;
+  }
+
+  // Function to replace video links and images with video players
   function replaceVideoLinksAndImages(videoExtensions, parseGithubLinks) {
     // Process anchor tags
     const links = document.querySelectorAll('a[href]');
     links.forEach(link => {
-      const url = link.getAttribute('href');
+      let url = link.getAttribute('href');
       if (parseGithubLinks && url.includes('github.com') && url.includes('assets')) {
         // Assume GitHub asset links are videos
-        const videoPlayer = createVideoPlayer(url.replace('#/', ''), 'video/mp4');
+        url = resolveRelativeUrl(url.replace('#/', ''));
+        const videoPlayer = createVideoPlayer(url, 'video/mp4');
         link.parentNode.replaceChild(videoPlayer, link);
       } else if (isVideoLink(url, videoExtensions)) {
-        const videoPlayer = createVideoPlayer(url.replace('#/', ''), `video/${url.split('.').pop().toLowerCase()}`);
+        url = resolveRelativeUrl(url.replace('#/', ''));
+        const videoPlayer = createVideoPlayer(url, `video/${url.split('.').pop().toLowerCase()}`);
         link.parentNode.replaceChild(videoPlayer, link);
       }
     });
@@ -40,9 +60,10 @@
     // Process image tags
     const images = document.querySelectorAll('img');
     images.forEach(img => {
-      const url = img.getAttribute('src');
+      let url = img.getAttribute('src');
       if (isVideoLink(url, videoExtensions)) {
-        const videoPlayer = createVideoPlayer(url.replace('#/', ''), `video/${url.split('.').pop().toLowerCase()}`);
+        url = resolveRelativeUrl(url.replace('#/', ''));
+        const videoPlayer = createVideoPlayer(url, `video/${url.split('.').pop().toLowerCase()}`);
         img.parentNode.replaceChild(videoPlayer, img);
       }
     });
@@ -60,6 +81,7 @@
     });
   }
 
+  // Register the plugin with Docsify
   window.$docsify = window.$docsify || {};
   window.$docsify.plugins = (window.$docsify.plugins || []).concat(initDocsifyVideoPlayerPlugin);
 })();

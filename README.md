@@ -1,5 +1,5 @@
 # docsify-videoplayer
-Docsify video player is Plugin is a plugin for Docsify that replace markdown link to video file with a video player
+Docsify video player is a plugin for Docsify that replace markdown link to video file with a video player
 
 turn 
 ```
@@ -15,6 +15,10 @@ to
 [docsify-videoplayer-demo](https://gllmar.github.io/docsify-videoplayer/#/)
 
 ## tests
+
+### relative links
+
+[relative link](./relative-link/)
 
 ### in lists
 
