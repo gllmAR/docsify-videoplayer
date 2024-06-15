@@ -20,6 +20,11 @@ to
 
 [relative link](subfolder/)
 
+### thumbnail -> poster
+[thumbnail poster](thumbnailposter.md)
+
+* ![[ipsum_001](./media/ipsum_020.mp4)](./media/thumb_ipsum_020.webp)
+
 ### in lists
 
 * ![a video](/media/ipsum_020.mp4)
