@@ -23,7 +23,7 @@ to
 ### thumbnail -> poster
 [thumbnail poster](thumbnailposter.md)
 
-* ![[ipsum_001](./media/ipsum_020.mp4)](./media/thumb_ipsum_020.webp)
+* [![ipsum_020](./media/thumb_ipsum_020.webp)](./media/ipsum_020.mp4)
 
 ### in lists
 

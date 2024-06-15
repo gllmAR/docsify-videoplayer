@@ -49,19 +49,17 @@
   // Function to replace custom markdown with video players
   function replaceCustomMarkdown(videoExtensions) {
     console.log('Processing custom markdown for video players');
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      const altText = img.getAttribute('alt');
-      console.log(`Processing img with alt text: ${altText}`);
-      if (altText && altText.startsWith('[') && altText.includes('](') && altText.endsWith(')')) {
-        const innerLink = altText.substring(1, altText.length - 1);
-        const [videoLabel, videoUrl] = innerLink.split('](');
-        const video = videoUrl;
-        const poster = img.getAttribute('src');
-        console.log(`Found custom markdown: video URL: ${video}, poster URL: ${poster}`);
-        if (isVideoLink(video, videoExtensions)) {
-          const videoPlayer = createVideoPlayer(resolveRelativeUrl(video), `video/${video.split('.').pop().toLowerCase()}`, resolveRelativeUrl(poster));
-          img.parentNode.replaceChild(videoPlayer, img);
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      const img = link.querySelector('img');
+      if (img) {
+        const src = img.getAttribute('src');
+        const alt = img.getAttribute('alt');
+        console.log(`Processing embedded video with poster: video URL: ${href}, poster URL: ${src}`);
+        if (isVideoLink(href, videoExtensions)) {
+          const videoPlayer = createVideoPlayer(resolveRelativeUrl(href), `video/${href.split('.').pop().toLowerCase()}`, resolveRelativeUrl(src));
+          link.parentNode.replaceChild(videoPlayer, link);
         }
       }
     });
